@@ -42,12 +42,12 @@ layout: list = [
               background_color=styles.window_background_color, size=(WINDOW_SIZE[0], 60))],
     [sg.Frame(title="File extensions",  font=styles.frame_font_default, layout=[[sg.Column(checkboxes, justification="center", element_justification="center",
                                                                                            background_color=styles.window_background_color)]], background_color=styles.window_background_color, size=(WINDOW_SIZE[0], 150))],
-    [sg.Column([[sg.Button('Organizar', button_color="#1A73E8")]], justification="center",
+    [sg.Column([[sg.Button('Organize', button_color="#1A73E8")]], justification="center",
                element_justification="center", background_color=styles.window_background_color)]
 ]
 
 window = sg.Window(
-    'OrdenMiler',
+    'Organizer',
     layout=layout,
     resizable=False,
     background_color=styles.window_background_color,
@@ -60,13 +60,13 @@ while True:
     if event == sg.WINDOW_CLOSED or event == 'Quit':
         break
 
-    if event == "Organizar":
+    if event == "Organize":
         dir_0: str = format_directory(to_raw_string(values['browser0']))
         dir_1: str = format_directory(to_raw_string(values['browser1']))
         if (not verify_if_directory_exists(dir_0) or not verify_if_directory_exists(dir_1)):
             sg.popup_ok(
-                "O caminho especificado não existe",
-                title="Erro",
+                "The specified path dont exists",
+                title="Error",
                 background_color=styles.popup_background_color,
                 text_color=styles.text_default_color,
                 button_color=styles.popup_button_color
@@ -86,7 +86,7 @@ while True:
                 )
             else:
                 sg.popup_ok(
-                    "Nenhum arquivo foi movido",
+                    "No file has been moved or copied",
                     title="Warning",
                     background_color=styles.popup_background_color,
                     text_color=styles.text_default_color,
